@@ -17,7 +17,8 @@ func _physics_process(delta):
 	var jump = Input.is_action_just_pressed("ui_accept")
 	var jump_released = Input.is_action_just_released("ui_accept")
 	
-	motion.y += GRAVITY
+	if !is_on_floor():
+		motion.y += GRAVITY
 	
 	if right:
 		motion.x = 1
