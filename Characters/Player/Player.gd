@@ -12,10 +12,10 @@ onready var CROUCHCOLLISIONSHAPE = $CrouchCollisionShape2D
 onready var SPRITE = $Sprite
 onready var ANIM = $AnimationPlayer
 
-var speed = NORMAL_SPEED
+export var speed = NORMAL_SPEED
 var currentSpeed = speed
-var isCrouched = false
-var isOnSlipperyFloor = true
+export (bool) var isCrouched = false
+export (bool) var isOnSlipperyFloor = false
 var isMoving = false
 var motion = Vector2()
 
