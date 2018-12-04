@@ -4,10 +4,10 @@ const JUMP_FORCE = 300
 const UP = Vector2(0, -1)
 const GRAVITY = 20
 
-onready var COLLISIONSHAPE = get_node("CollisionShape2D")
-onready var CROUCHCOLLISIONSHAPE = get_node("CrouchCollisionShape2D")
-onready var SPRITE = get_node("Sprite")
-onready var CROUCHSPRITE = get_node("CrouchSprite")
+onready var COLLISIONSHAPE = $CollisionShape2D
+onready var CROUCHCOLLISIONSHAPE = $CrouchCollisionShape2D
+onready var SPRITE = $Sprite
+onready var CROUCHSPRITE = $CrouchSprite
 onready var ANIM = $AnimationPlayer
 
 export var speed = 80
@@ -28,6 +28,8 @@ func _physics_process(delta):
 	
 	if !is_on_floor():
 		motion.y += GRAVITY
+	else:
+		motion.y = GRAVITY
 	
 	if right:
 		motion.x = 1
