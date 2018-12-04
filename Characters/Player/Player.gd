@@ -12,7 +12,10 @@ onready var SPRITE = $Sprite
 onready var ANIM = $AnimationPlayer
 
 var speed = NORMAL_SPEED
+var currentSpeed = speed
 var isCrouched = false
+var isOnSlipperyFloor = true
+var isMoving = false
 var motion = Vector2()
 
 func _ready():
@@ -33,13 +36,31 @@ func _physics_process(delta):
 		motion.y = GRAVITY
 	
 	if right:
+		if isOnSlipperyFloor:
+			currentSpeed = speed
 		motion.x = 1
 		SPRITE.flip_h = false
+		isMoving = true
 	elif left:
+		if isOnSlipperyFloor:
+			currentSpeed = speed
 		motion.x = -1
 		SPRITE.flip_h = true
+		isMoving = true
 	else:
-		motion.x = 0
+		isMoving = false
+		if isOnSlipperyFloor:
+			if currentSpeed > 0 && motion.x != 0:
+				currentSpeed -= 1.5
+				if motion.x >= 0:
+					motion.x = 1
+				else:
+					motion.x = -1
+			else:
+				motion.x = 0
+				currentSpeed = speed;
+		else:
+			motion.x = 0
 		
 	if jump && is_on_floor():
 		motion.y = -JUMP_FORCE
@@ -54,8 +75,11 @@ func _physics_process(delta):
 	elif crouch_released:
 		stand()
 	
-	motion.x *= speed
-	
+	if isOnSlipperyFloor:
+		motion.x *= currentSpeed
+	else:
+		motion.x *= speed
+	print(str(motion.x))	
 	animations()
 	move_and_slide(motion, UP)
 
@@ -80,19 +104,27 @@ func toggle_animation(animation_name):
 func animations():
 	if is_on_floor():
 		if isCrouched:
-			if motion.x >= 1:
-				toggle_animation("CrouchWalk")
-			elif motion.x <= -1:
+			if isMoving:
 				toggle_animation("CrouchWalk")
 			else:
 				toggle_animation("CrouchIdle")
+#			if motion.x >= 1:
+#				toggle_animation("CrouchWalk")
+#			elif motion.x <= -1:
+#				toggle_animation("CrouchWalk")
+#			else:
+#				toggle_animation("CrouchIdle")
 		else:
-			if motion.x >= 1:
-				toggle_animation("Run")
-			elif motion.x <= -1:
+			if isMoving:
 				toggle_animation("Run")
 			else:
 				toggle_animation("Idle")
+#			if motion.x >= 1:d
+#				toggle_animation("Run")
+#			elif motion.x <= -1:
+#				toggle_animation("Run")
+#			else:
+#				toggle_animation("Idle")
 	else:
 		if motion.y < 0:
 			toggle_animation("JumpUp")
