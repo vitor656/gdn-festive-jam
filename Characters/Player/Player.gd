@@ -80,7 +80,6 @@ func _physics_process(delta):
 		motion.x *= currentSpeed
 	else:
 		motion.x *= speed
-	print(str(motion.x))	
 	animations()
 	move_and_slide(motion, UP)
 
