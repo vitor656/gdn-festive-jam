@@ -8,8 +8,10 @@ onready var COLLISIONSHAPE = get_node("CollisionShape2D")
 onready var CROUCHCOLLISIONSHAPE = get_node("CrouchCollisionShape2D")
 onready var SPRITE = get_node("Sprite")
 onready var CROUCHSPRITE = get_node("CrouchSprite")
+onready var ANIM = $AnimationPlayer
 
 export var speed = 80
+var isCrouched = false
 var motion = Vector2()
 
 func _ready():
@@ -33,10 +35,12 @@ func _physics_process(delta):
 		motion.x = -1
 	else:
 		motion.x = 0
+		
 	if jump && is_on_floor():
 		motion.y = -JUMP_FORCE
 	elif jump_released && motion.y < 0:
 		motion.y = 0
+		
 	if crouch:
 		crouch()
 	elif crouch_released:
@@ -44,18 +48,52 @@ func _physics_process(delta):
 	
 	motion.x *= speed
 	
+	animations()
 	move_and_slide(motion, UP)
 
 func crouch():
-	SPRITE.visible = false
-	CROUCHSPRITE.visible = true
+	#SPRITE.visible = false
+	#CROUCHSPRITE.visible = true
 	COLLISIONSHAPE.disabled = true
 	CROUCHCOLLISIONSHAPE.disabled = false
+	isCrouched = true
 
 func stand():
-	SPRITE.visible = true
-	CROUCHSPRITE.visible = false
+	#SPRITE.visible = true
+	#CROUCHSPRITE.visible = false
 	COLLISIONSHAPE.disabled = false
 	CROUCHCOLLISIONSHAPE.disabled = true
+	isCrouched = false
 	if is_on_ceiling():
 		crouch()
+		
+func toggle_animation(animation_name):
+	if ANIM.current_animation != animation_name:
+		ANIM.play(animation_name)
+		
+func animations():
+	if is_on_floor():
+		if isCrouched:
+			if motion.x >= 1:
+				toggle_animation("CrouchWalk")
+				SPRITE.flip_h = false
+			elif motion.x <= -1:
+				toggle_animation("CrouchWalk")
+				SPRITE.flip_h = true
+			else:
+				toggle_animation("CrouchIdle")
+		else:
+			if motion.x >= 1:
+				toggle_animation("Run")
+				SPRITE.flip_h = false
+			elif motion.x <= -1:
+				toggle_animation("Run")
+				SPRITE.flip_h = true
+			else:
+				toggle_animation("Idle")
+	else:
+		if motion.y < 0:
+			toggle_animation("JumpUp")
+		if motion.y > 0:
+			toggle_animation("JumpDown")
+	pass
