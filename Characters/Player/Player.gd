@@ -5,6 +5,7 @@ const UP = Vector2(0, -1)
 const GRAVITY = 20
 const NORMAL_SPEED = 80
 const CROUCH_SPEED = 20
+const SLIPPERY_FACTOR = 1.5
 
 onready var COLLISIONSHAPE = $CollisionShape2D
 onready var CROUCHCOLLISIONSHAPE = $CrouchCollisionShape2D
@@ -51,7 +52,7 @@ func _physics_process(delta):
 		isMoving = false
 		if isOnSlipperyFloor:
 			if currentSpeed > 0 && motion.x != 0:
-				currentSpeed -= 1.5
+				currentSpeed -= SLIPPERY_FACTOR
 				if motion.x >= 0:
 					motion.x = 1
 				else:
