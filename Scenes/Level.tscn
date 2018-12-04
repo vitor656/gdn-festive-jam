@@ -1,15 +1,49 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Environment/tile.tres" type="TileSet" id=1]
-[ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Environment/Camera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Environment/Camera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Environment/fundo2.png" type="Texture" id=3]
+[ext_resource path="res://Environment/TileSet.tres" type="TileSet" id=4]
 
 [node name="Level" type="Node" index="0"]
 
-[node name="TileMap" type="TileMap" parent="." index="0"]
+[node name="Player" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 71.6494, 58.381 )
+
+[node name="Camera" parent="." index="1" instance=ExtResource( 2 )]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="2"]
+
+editor/display_folded = true
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
+
+motion_scale = Vector2( 1, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 160, 128 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground" index="1"]
+
+texture = ExtResource( 3 )
+centered = false
+
+[node name="TileMap" type="TileMap" parent="." index="3"]
 
 mode = 0
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -24,13 +58,6 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 65536, 0, 0, 65545, 0, 0, 65546, 0, 0, 65555, 0, 0, 65565, 0, 0, 131072, 0, 0, 131081, 0, 0, 131082, 0, 0, 131091, 0, 0, 131101, 0, 0, 196608, 0, 0, 196617, 0, 0, 196618, 0, 0, 196627, 0, 0, 196637, 0, 0, 262144, 0, 0, 262153, 0, 0, 262154, 0, 0, 262163, 0, 0, 262173, 0, 0, 327680, 0, 0, 327709, 0, 0, 393216, 0, 0, 393245, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 458772, 0, 0, 458773, 0, 0, 458774, 0, 0, 458775, 0, 0, 458776, 0, 0, 458777, 0, 0, 458778, 0, 0, 458779, 0, 0, 458780, 0, 0, 458781, 0, 0, 524298, 0, 0, 524307, 0, 0, 589834, 0, 0, 589843, 0, 0, 655370, 0, 0, 655376, 0, 0, 655377, 0, 0, 655379, 0, 0, 720906, 0, 0, 720912, 0, 0, 720913, 0, 0, 720915, 0, 0, 786442, 0, 0, 786451, 0, 0, 851978, 0, 0, 851982, 0, 0, 851983, 0, 0, 851987, 0, 0, 917514, 0, 0, 917523, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983055, 0, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0, 983059, 0, 0 )
-_sections_unfolded = [ "Cell" ]
-
-[node name="Player" parent="." index="1" instance=ExtResource( 2 )]
-
-position = Vector2( 71.6494, 58.381 )
-
-[node name="Camera" parent="." index="2" instance=ExtResource( 3 )]
+tile_data = PoolIntArray( 0, 0, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 2, 0, 10, 0, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 2, 0, 65536, 3, 0, 65545, 5, 0, 65546, 3, 0, 65555, 5, 0, 131072, 3, 0, 131081, 5, 0, 131082, 3, 0, 131091, 5, 0, 196608, 3, 0, 196617, 5, 0, 196618, 3, 0, 196625, 4, 0, 196627, 5, 0, 262144, 3, 0, 262153, 10, 0, 262154, 12, 0, 262163, 5, 0, 327680, 3, 0, 327696, 4, 0, 327699, 5, 0, 393216, 3, 0, 393230, 9, 0, 393231, 11, 0, 393235, 5, 0, 458752, 6, 0, 458753, 7, 0, 458754, 7, 0, 458755, 7, 0, 458756, 7, 0, 458757, 7, 0, 458758, 7, 0, 458759, 7, 0, 458760, 7, 0, 458761, 7, 0, 458762, 7, 0, 458763, 7, 0, 458764, 7, 0, 458765, 7, 0, 458766, 8, 0, 458767, 6, 0, 458768, 7, 0, 458769, 7, 0, 458770, 7, 0, 458771, 8, 0 )
 
 
