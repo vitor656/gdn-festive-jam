@@ -6,11 +6,14 @@ const GRAVITY = 20
 const NORMAL_SPEED = 80
 const CROUCH_SPEED = 20
 const SLIPPERY_FACTOR = 1.5
+const MAX_FALL_SPEED = 200
 
 onready var COLLISIONSHAPE = $CollisionShape2D
 onready var CROUCHCOLLISIONSHAPE = $CrouchCollisionShape2D
 onready var SPRITE = $Sprite
 onready var ANIM = $AnimationPlayer
+
+onready var map8 = get_parent().get_node("Map/TileMap8x8")
 
 export var speed = NORMAL_SPEED
 var currentSpeed = speed
@@ -28,11 +31,12 @@ func _physics_process(delta):
 	var left = Input.is_action_pressed("ui_left")
 	var jump = Input.is_action_just_pressed("ui_accept")
 	var jump_released = Input.is_action_just_released("ui_accept")
-	var crouch = Input.is_action_just_pressed("ui_down")
+	var crouch = Input.is_action_pressed("ui_down")
 	var crouch_released = Input.is_action_just_released("ui_down")
 	
 	if !is_on_floor():
 		motion.y += GRAVITY
+		motion.y = min(motion.y, MAX_FALL_SPEED)
 	else:
 		motion.y = GRAVITY
 	
@@ -73,7 +77,7 @@ func _physics_process(delta):
 		
 	if crouch:
 		crouch()
-	elif crouch_released:
+	elif !check_ceiling_on_crouch():
 		stand()
 	
 	if isOnSlipperyFloor:
@@ -97,6 +101,13 @@ func stand():
 	if is_on_ceiling():
 		crouch()
 		
+func check_ceiling_on_crouch():
+	if map8.get_cellv(map8.world_to_map(position)) > -1:
+		return true
+	
+	return false
+	
+	
 func toggle_animation(animation_name):
 	if ANIM.current_animation != animation_name:
 		ANIM.play(animation_name)

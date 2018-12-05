@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Environment/terminal-1.png" type="Texture" id=1]
 
@@ -21,6 +21,11 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 6.00845, 8 )
+
 [node name="Terminal" type="Node2D" index="0"]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
@@ -39,5 +44,19 @@ playback_speed = 1.0
 anims/Idle = SubResource( 1 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
+
+[node name="Area2D" type="Area2D" parent="." index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+shape = SubResource( 2 )
 
 
