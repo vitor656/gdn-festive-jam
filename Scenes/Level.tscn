@@ -22,6 +22,7 @@ position = Vector2( 128.259, 103.387 )
 
 position = Vector2( 71.6494, 58.381 )
 isHasty = false
+isSlowfall = false
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="2"]
 

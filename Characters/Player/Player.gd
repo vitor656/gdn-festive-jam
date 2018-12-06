@@ -3,6 +3,7 @@ extends KinematicBody2D
 const JUMP_FORCE = 300
 const UP = Vector2(0, -1)
 const GRAVITY = 20
+const LOW_GRAVITY = 20
 const NORMAL_SPEED = 80
 const CROUCH_SPEED = 20
 const SLIPPERY_FACTOR = 1.5
@@ -20,6 +21,7 @@ var currentSpeed = speed
 export (bool) var isCrouched = false
 export (bool) var isOnSlipperyFloor = false
 export (bool) var isHasty = false
+export (bool) var isSlowfall = false
 var isMoving = false
 var motion = Vector2()
 
@@ -35,11 +37,18 @@ func _physics_process(delta):
 	var crouch = Input.is_action_pressed("ui_down")
 	var crouch_released = Input.is_action_just_released("ui_down")
 	
-	if !is_on_floor():
-		motion.y += GRAVITY
-		motion.y = min(motion.y, MAX_FALL_SPEED)
+	if isSlowfall:
+		if !is_on_floor():
+			motion.y += GRAVITY/2
+			motion.y = min(motion.y, MAX_FALL_SPEED/2)
+		else:
+			motion.y = GRAVITY/2
 	else:
-		motion.y = GRAVITY
+		if !is_on_floor():
+			motion.y += GRAVITY
+			motion.y = min(motion.y, MAX_FALL_SPEED)
+		else:
+			motion.y = GRAVITY
 	
 	if right:
 		if isOnSlipperyFloor:
