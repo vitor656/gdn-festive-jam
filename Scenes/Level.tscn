@@ -21,6 +21,7 @@ position = Vector2( 128.259, 103.387 )
 [node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 71.6494, 58.381 )
+isHasty = false
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="2"]
 

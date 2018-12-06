@@ -19,6 +19,7 @@ export var speed = NORMAL_SPEED
 var currentSpeed = speed
 export (bool) var isCrouched = false
 export (bool) var isOnSlipperyFloor = false
+export (bool) var isHasty = false
 var isMoving = false
 var motion = Vector2()
 
@@ -52,6 +53,12 @@ func _physics_process(delta):
 		motion.x = -1
 		SPRITE.flip_h = true
 		isMoving = true
+	elif isHasty:
+		isMoving = true
+		if motion.x < 0:
+			motion.x = -1
+		else:
+			motion.x = 1
 	else:
 		isMoving = false
 		if isOnSlipperyFloor:
