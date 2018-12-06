@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/timerBar_fill.png-c918e295c40db3dd3b1435ff910c5538.stex"
+path="res://.import/timerBar_bg.png-bfaf946119a73906590a4f1b52cb3087.stex"
 
 [deps]
 
-source_file="res://Scenes/timerBar_fill.png"
-dest_files=[ "res://.import/timerBar_fill.png-c918e295c40db3dd3b1435ff910c5538.stex" ]
+source_file="res://UI/timerBar_bg.png"
+dest_files=[ "res://.import/timerBar_bg.png-bfaf946119a73906590a4f1b52cb3087.stex" ]
 
 [params]
 

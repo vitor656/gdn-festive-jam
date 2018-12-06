@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/autotile.png-0e376e5d05c1f7eb2a8db32eb087f0f1.stex"
+path="res://.import/door_1.png-5820880b1ecead9f6f304e02aeb9e950.stex"
 
 [deps]
 
-source_file="res://Environment/autotile.png"
-dest_files=[ "res://.import/autotile.png-0e376e5d05c1f7eb2a8db32eb087f0f1.stex" ]
+source_file="res://Environment/Door/door_1.png"
+dest_files=[ "res://.import/door_1.png-5820880b1ecead9f6f304e02aeb9e950.stex" ]
 
 [params]
 

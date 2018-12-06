@@ -14,6 +14,10 @@ config/name="gdn-jam"
 run/main_scene="res://Scenes/Level.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Singletons/Global.gd"
+
 [display]
 
 window/size/width=160

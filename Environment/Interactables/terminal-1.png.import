@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/terminal-1.png-c7b04eafacda84627d5602ea9f8e3291.stex"
+path="res://.import/terminal-1.png-b8b6abe739e680b45f59f9ca22b08959.stex"
 
 [deps]
 
-source_file="res://Environment/terminal-1.png"
-dest_files=[ "res://.import/terminal-1.png-c7b04eafacda84627d5602ea9f8e3291.stex" ]
+source_file="res://Environment/Interactables/terminal-1.png"
+dest_files=[ "res://.import/terminal-1.png-b8b6abe739e680b45f59f9ca22b08959.stex" ]
 
 [params]
 

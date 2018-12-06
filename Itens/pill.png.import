@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tile_1.png-decc8d0da775f3152bb85466446e11d4.stex"
+path="res://.import/pill.png-ce97b244c288261b6b3e403226bb5c53.stex"
 
 [deps]
 
-source_file="res://Environment/tile_1.png"
-dest_files=[ "res://.import/tile_1.png-decc8d0da775f3152bb85466446e11d4.stex" ]
+source_file="res://Itens/pill.png"
+dest_files=[ "res://.import/pill.png-ce97b244c288261b6b3e403226bb5c53.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -25,5 +25,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tile8.png-ce5e345186ae17223ffbc0d14c4417cf.stex"
+path="res://.import/autotile.png-ccf7b7d7376335c5cff35818c246eace.stex"
 
 [deps]
 
-source_file="res://Environment/tile8.png"
-dest_files=[ "res://.import/tile8.png-ce5e345186ae17223ffbc0d14c4417cf.stex" ]
+source_file="res://Environment/Tiles/autotile.png"
+dest_files=[ "res://.import/autotile.png-ccf7b7d7376335c5cff35818c246eace.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -25,5 +25,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
