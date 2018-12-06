@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Level.gd" type="Script" id=1]
 [ext_resource path="res://Environment/Background/fundo2.png" type="Texture" id=2]
@@ -8,9 +8,10 @@
 [ext_resource path="res://Itens/Pill.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Itens/JumpBar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Environment/Portals/BluePortal.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Environment/Camera/Camera.tscn" type="PackedScene" id=10]
-[ext_resource path="res://UI/GUI.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Environment/General/Bed.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Environment/Camera/Camera.tscn" type="PackedScene" id=11]
+[ext_resource path="res://UI/GUI.tscn" type="PackedScene" id=12]
 
 [node name="Level" type="Node" index="0"]
 
@@ -128,17 +129,22 @@ doorsID = [ 2, 3, 4 ]
 
 position = Vector2( 627.903, 72.9824 )
 
-[node name="Player" parent="." index="2" instance=ExtResource( 9 )]
+[node name="Bed" parent="Map/Objects" index="12" instance=ExtResource( 9 )]
+
+position = Vector2( 50, 107 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Player" parent="." index="2" instance=ExtResource( 10 )]
 
 position = Vector2( 71.6494, 58.381 )
 isHasty = false
 isSlowfall = false
 
-[node name="Camera" parent="." index="3" instance=ExtResource( 10 )]
+[node name="Camera" parent="." index="3" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 
-[node name="GUI" parent="Camera" index="0" instance=ExtResource( 11 )]
+[node name="GUI" parent="Camera" index="0" instance=ExtResource( 12 )]
 
 anchor_left = 0.5
 anchor_right = 0.5
