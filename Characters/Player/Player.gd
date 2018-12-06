@@ -44,14 +44,15 @@ func _physics_process(delta):
 		if !is_on_floor():
 			motion.y += GRAVITY/2
 			motion.y = min(motion.y, MAX_FALL_SPEED/2)
-		else:
-			motion.y = GRAVITY/2
+		#else:
+		#	motion.y = GRAVITY/2
 	else:
 		if !is_on_floor():
 			motion.y += GRAVITY
 			motion.y = min(motion.y, MAX_FALL_SPEED)
-		else:
-			motion.y = GRAVITY
+		#Pq esse else?
+		#else:
+		#	motion.y = GRAVITY
 	
 	if right:
 		if isOnSlipperyFloor:
