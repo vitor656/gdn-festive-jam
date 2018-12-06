@@ -73,13 +73,14 @@ _sections_unfolded = [ "Cell", "Collision" ]
 
 [node name="Objects" type="Node2D" parent="Map" index="1"]
 
-[node name="Door" parent="Map/Objects" index="0" instance=ExtResource( 4 )]
+[node name="Door1" parent="Map/Objects" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( 315.875, 104.024 )
 
 [node name="Terminal" parent="Map/Objects" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( 282.73, 104 )
+doorsID = [ 1 ]
 
 [node name="Pill" parent="Map/Objects" index="2" instance=ExtResource( 6 )]
 

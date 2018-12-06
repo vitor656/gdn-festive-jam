@@ -25,6 +25,8 @@ export (bool) var isSlowfall = false
 var isMoving = false
 var motion = Vector2()
 
+var interactableObject = null
+
 func _ready():
 	pass
 
@@ -36,6 +38,7 @@ func _physics_process(delta):
 	var jump_released = Input.is_action_just_released("ui_accept")
 	var crouch = Input.is_action_pressed("ui_down")
 	var crouch_released = Input.is_action_just_released("ui_down")
+	var interact = Input.is_action_just_pressed("ui_up")
 	
 	if isSlowfall:
 		if !is_on_floor():
@@ -102,6 +105,10 @@ func _physics_process(delta):
 		motion.x *= speed
 	animations()
 	move_and_slide(motion, UP)
+	
+	if interact:
+		if interactableObject != null:
+			interactableObject.interact()
 
 func crouch():
 	COLLISIONSHAPE.disabled = true

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Environment/Interactables/terminal-1.png" type="Texture" id=1]
+[ext_resource path="res://Environment/Interactables/Terminal.gd" type="Script" id=1]
+[ext_resource path="res://Environment/Interactables/terminal-1.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 
@@ -26,11 +27,14 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 6.00845, 8 )
 
-[node name="Terminal" type="Node2D" index="0"]
+[node name="Terminal" type="Node2D"]
+
+script = ExtResource( 1 )
+doorsID = null
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 hframes = 5
 _sections_unfolded = [ "Animation" ]
 
@@ -58,5 +62,9 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 
 shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 
 
