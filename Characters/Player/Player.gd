@@ -13,7 +13,7 @@ onready var CROUCHCOLLISIONSHAPE = $CrouchCollisionShape2D
 onready var SPRITE = $Sprite
 onready var ANIM = $AnimationPlayer
 
-onready var map8 = get_parent().get_node("Map/TileMap8x8")
+onready var tileMap = get_parent().get_node("Map/TileMap")
 
 export var speed = NORMAL_SPEED
 var currentSpeed = speed
@@ -102,7 +102,7 @@ func stand():
 		crouch()
 		
 func check_ceiling_on_crouch():
-	if map8.get_cellv(map8.world_to_map(position)) > -1:
+	if tileMap.get_cellv(tileMap.world_to_map(position)) > -1:
 		return true
 	
 	return false
