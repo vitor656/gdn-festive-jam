@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/trampolim.wav-86636630c4af035ba8e6e297912400d0.sample"
+
+[deps]
+
+source_file="res://Sounds/trampolim.wav"
+dest_files=[ "res://.import/trampolim.wav-86636630c4af035ba8e6e297912400d0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

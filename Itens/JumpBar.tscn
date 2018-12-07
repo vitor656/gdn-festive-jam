@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Itens/JumpBar.gd" type="Script" id=1]
 [ext_resource path="res://Itens/jump_bar-sheet.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/trampolim.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 
@@ -46,7 +47,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 8.05515, 3.92392 )
 
-[node name="JumpBar" type="Area2D"]
+[node name="JumpBar" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -78,5 +79,14 @@ blend_times = [  ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
 shape = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 

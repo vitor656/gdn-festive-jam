@@ -2,11 +2,10 @@ extends Node
 
 export (bool) var isHotPotatoEnabled = false
 export var HOT_POTATO_TIME = 60
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+
 onready var hotPotatoTimer = $Camera/GUI/HBoxContainer/HotPotatoTimerBar
 onready var hotPotatoTimerLabel = $Camera/GUI/HBoxContainer/HotPotatoTimerBar/Counter
+
 func _ready():	
 	hotPotatoTimer.visible = isHotPotatoEnabled
 	hotPotatoTimer.max_value = HOT_POTATO_TIME
@@ -19,3 +18,9 @@ func _process(delta):
 			hotPotatoTimerLabel.add_color_override("font_color",Color(.7,0,0))
 		hotPotatoTimer.value -= delta
 	pass
+
+
+func _on_StartGameTimer_timeout():
+	$Camera/ScreenShake.start(1)
+	$Map/Objects/Door0.open()
+	$PrepareToStart/StartShake.play()

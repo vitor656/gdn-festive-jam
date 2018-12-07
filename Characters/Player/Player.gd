@@ -89,6 +89,7 @@ func _physics_process(delta):
 		
 	if jump && is_on_floor():
 		motion.y = -JUMP_FORCE
+		$JumpSound.play()
 	elif jump_released && motion.y < 0:
 		motion.y = 0
 		
@@ -110,6 +111,7 @@ func _physics_process(delta):
 	if interact:
 		if interactableObject != null:
 			interactableObject.interact()
+			$InteractSound.play()
 
 func crouch():
 	COLLISIONSHAPE.disabled = true

@@ -10,6 +10,7 @@ func _on_body_entered(obj):
 		obj.motion.y = -JumpForce
 		$AnimationPlayer.play("Triggered")
 		$AnimationPlayer.queue("idle")
+		$AudioStreamPlayer.play()
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
