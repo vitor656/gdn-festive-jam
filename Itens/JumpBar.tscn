@@ -47,7 +47,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 8.05515, 3.92392 )
 
-[node name="JumpBar" type="Area2D" index="0"]
+[node name="JumpBar" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )

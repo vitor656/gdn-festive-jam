@@ -135,6 +135,7 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 speed = 80
 isCrouched = false
 isOnSlipperyFloor = false

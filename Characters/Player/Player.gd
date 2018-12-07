@@ -31,7 +31,7 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	
+
 	var right = Input.is_action_pressed("ui_right")
 	var left = Input.is_action_pressed("ui_left")
 	var jump = Input.is_action_just_pressed("ui_accept")
