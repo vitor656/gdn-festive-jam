@@ -6,7 +6,7 @@ var interactionDone = false
 func interact():
 	if !interactionDone:
 		for id in doorsID:
-			var door = get_parent().get_node("Door" + str(id))
+			var door = get_parent().get_node("Doors/Door" + str(id))
 			if door != null:
 				door.open()
 		

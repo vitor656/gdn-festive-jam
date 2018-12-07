@@ -22,5 +22,5 @@ func _process(delta):
 
 func _on_StartGameTimer_timeout():
 	$Camera/ScreenShake.start(1)
-	$Map/Objects/Door0.open()
+	$Map/Objects/Doors/Door0.open()
 	$PrepareToStart/StartShake.play()

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/jump_bar-sheet.png-f3a207fb8705b226cffcef227afefcd0.stex"
+path="res://.import/LaserLauncher.png-39835ad356cdc610ae0289e5d9022c5e.stex"
 
 [deps]
 
-source_file="res://Itens/jump_bar-sheet.png"
-dest_files=[ "res://.import/jump_bar-sheet.png-f3a207fb8705b226cffcef227afefcd0.stex" ]
+source_file="res://Itens/Laser/LaserLauncher.png"
+dest_files=[ "res://.import/LaserLauncher.png-39835ad356cdc610ae0289e5d9022c5e.stex" ]
 
 [params]
 
