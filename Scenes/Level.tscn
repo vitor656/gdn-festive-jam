@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/Level.gd" type="Script" id=1]
 [ext_resource path="res://Environment/Background/fundo2.png" type="Texture" id=2]
@@ -11,12 +11,13 @@
 [ext_resource path="res://Itens/JumpBar/JumpBar.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Itens/Bomb/Bomb.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Itens/Laser/LaserLauncher.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Environment/Camera/Camera.tscn" type="PackedScene" id=13]
-[ext_resource path="res://UI/GUI.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Effects/ScreenShake/ScreenShake.tscn" type="PackedScene" id=15]
-[ext_resource path="res://UI/Title.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Sounds/Randomize8.wav" type="AudioStream" id=17]
+[ext_resource path="res://Environment/Spikes/Spike.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Environment/Camera/Camera.tscn" type="PackedScene" id=14]
+[ext_resource path="res://UI/GUI.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Effects/ScreenShake/ScreenShake.tscn" type="PackedScene" id=16]
+[ext_resource path="res://UI/Title.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Sounds/Randomize8.wav" type="AudioStream" id=18]
 
 [node name="Level" type="Node" index="0"]
 
@@ -201,13 +202,33 @@ position = Vector2( 572.169, 147.868 )
 
 position = Vector2( 579.915, 155.718 )
 
-[node name="Player" parent="." index="2" instance=ExtResource( 12 )]
+[node name="Spikes" type="Node2D" parent="Map/Objects" index="18"]
+
+[node name="Spike" parent="Map/Objects/Spikes" index="0" instance=ExtResource( 12 )]
+
+position = Vector2( 372, 108 )
+
+[node name="Spike2" parent="Map/Objects/Spikes" index="1" instance=ExtResource( 12 )]
+
+position = Vector2( 380, 108 )
+
+[node name="Spike3" parent="Map/Objects/Spikes" index="2" instance=ExtResource( 12 )]
+
+position = Vector2( 412, 108 )
+
+[node name="Spike4" parent="Map/Objects/Spikes" index="3" instance=ExtResource( 12 )]
+
+position = Vector2( 420, 108 )
+
+[node name="Player" parent="." index="2" instance=ExtResource( 13 )]
 
 position = Vector2( 124.202, 103.24 )
 
-[node name="Camera" parent="." index="3" instance=ExtResource( 13 )]
+[node name="Camera" parent="." index="3" instance=ExtResource( 14 )]
 
-[node name="GUI" parent="Camera" index="0" instance=ExtResource( 14 )]
+editor/display_folded = true
+
+[node name="GUI" parent="Camera" index="0" instance=ExtResource( 15 )]
 
 anchor_left = 0.5
 anchor_right = 0.5
@@ -216,11 +237,11 @@ margin_right = 100.0
 margin_bottom = 50.0
 _sections_unfolded = [ "Visibility" ]
 
-[node name="ScreenShake" parent="Camera" index="1" instance=ExtResource( 15 )]
+[node name="ScreenShake" parent="Camera" index="1" instance=ExtResource( 16 )]
 
 position = Vector2( 0.358486, 0 )
 
-[node name="Title" parent="." index="4" instance=ExtResource( 16 )]
+[node name="Title" parent="." index="4" instance=ExtResource( 17 )]
 
 [node name="PrepareToStart" type="Node2D" parent="." index="5"]
 
@@ -233,7 +254,7 @@ autostart = true
 
 [node name="StartShake" type="AudioStreamPlayer" parent="PrepareToStart" index="1"]
 
-stream = ExtResource( 17 )
+stream = ExtResource( 18 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
