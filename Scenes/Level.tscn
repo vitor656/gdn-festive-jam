@@ -19,7 +19,7 @@
 [ext_resource path="res://UI/Title.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Sounds/Randomize8.wav" type="AudioStream" id=18]
 
-[node name="Level" type="Node" index="0"]
+[node name="Level" type="Node"]
 
 script = ExtResource( 1 )
 isHotPotatoEnabled = false
@@ -176,7 +176,8 @@ position = Vector2( 564.022, 139.692 )
 
 [node name="LaserLauncher" parent="Map/Objects" index="12" instance=ExtResource( 11 )]
 
-position = Vector2( 492.336, 43.9162 )
+position = Vector2( 492, 44 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Bomb5" parent="Map/Objects" index="13" instance=ExtResource( 10 )]
 
