@@ -46,7 +46,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 4, 8 )
 
-[node name="Door" type="KinematicBody2D"]
+[node name="Door" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -74,5 +74,7 @@ _sections_unfolded = [ "Playback Options" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
 shape = SubResource( 3 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 

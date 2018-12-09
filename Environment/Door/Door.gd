@@ -5,4 +5,8 @@ func _ready():
 	
 func open():
 	$AnimationPlayer.play("Open")
-	$CollisionShape2D.disabled = true
+	
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Open":
+		$CollisionShape2D.disabled = true
