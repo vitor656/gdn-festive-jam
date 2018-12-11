@@ -1,0 +1,125 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/CardSelector.gd" type="Script" id=1]
+[ext_resource path="res://UI/Card.tscn" type="PackedScene" id=2]
+
+[node name="CardSelector" type="MarginContainer"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -84.0
+margin_top = -64.0
+margin_right = 84.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+script = ExtResource( 1 )
+_sections_unfolded = [ "Anchor", "Margin", "custom_constants" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 163.0
+margin_bottom = 123.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 5
+alignment = 1
+_sections_unfolded = [ "Margin", "custom_constants" ]
+
+[node name="Upgrades" type="HBoxContainer" parent="VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 6.0
+margin_right = 158.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 150, 50 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 2
+alignment = 1
+_sections_unfolded = [ "Margin", "Rect" ]
+
+[node name="Card1" parent="VBoxContainer/Upgrades" index="0" instance=ExtResource( 2 )]
+
+margin_left = 2.0
+margin_right = 52.0
+margin_bottom = 50.0
+
+[node name="Card3" parent="VBoxContainer/Upgrades" index="1" instance=ExtResource( 2 )]
+
+margin_left = 54.0
+margin_right = 104.0
+margin_bottom = 50.0
+
+[node name="Card2" parent="VBoxContainer/Upgrades" index="2" instance=ExtResource( 2 )]
+
+margin_left = 106.0
+margin_right = 156.0
+margin_bottom = 50.0
+
+[node name="Downgrades" type="HBoxContainer" parent="VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 61.0
+margin_right = 158.0
+margin_bottom = 111.0
+rect_min_size = Vector2( 150, 50 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 2
+alignment = 1
+_sections_unfolded = [ "Anchor", "Rect", "custom_constants" ]
+
+[node name="Card4" parent="VBoxContainer/Downgrades" index="0" instance=ExtResource( 2 )]
+
+margin_left = 2.0
+margin_right = 52.0
+margin_bottom = 50.0
+
+[node name="Card5" parent="VBoxContainer/Downgrades" index="1" instance=ExtResource( 2 )]
+
+margin_left = 54.0
+margin_right = 104.0
+margin_bottom = 50.0
+
+[node name="Card6" parent="VBoxContainer/Downgrades" index="2" instance=ExtResource( 2 )]
+
+margin_left = 106.0
+margin_right = 156.0
+margin_bottom = 50.0
+
+

@@ -19,7 +19,7 @@
 [ext_resource path="res://UI/Title.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Sounds/Randomize8.wav" type="AudioStream" id=18]
 
-[node name="Level" type="Node"]
+[node name="Level" type="Node" index="0"]
 
 script = ExtResource( 1 )
 isHotPotatoEnabled = false
@@ -223,8 +223,6 @@ position = Vector2( 124.202, 103.24 )
 _sections_unfolded = [ "Collision", "Transform", "collision" ]
 
 [node name="Camera" parent="." index="3" instance=ExtResource( 14 )]
-
-editor/display_folded = true
 
 [node name="GUI" parent="Camera" index="0" instance=ExtResource( 15 )]
 
