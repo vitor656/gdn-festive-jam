@@ -136,8 +136,6 @@ JumpForce = 800
 
 [node name="Spikes" type="Node2D" parent="Map/Objects" index="6"]
 
-editor/display_folded = true
-
 [node name="Spike" parent="Map/Objects/Spikes" index="0" instance=ExtResource( 10 )]
 
 position = Vector2( 182.333, -69.7787 )

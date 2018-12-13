@@ -13,6 +13,7 @@ onready var COLLISIONSHAPE = $CollisionShape2D
 onready var CROUCHCOLLISIONSHAPE = $CrouchCollisionShape2D
 onready var SPRITE = $Sprite
 onready var ANIM = $AnimationPlayer
+onready var RESPAWN_TIMER = $RespawnTimer
 
 onready var tileMap = get_parent().get_node("Map/TileMap")
 
@@ -23,6 +24,7 @@ export (bool) var isOnSlipperyFloor = false
 export (bool) var isHasty = false
 export (bool) var isSlowfall = false
 var isMoving = false
+var isAlive = true
 var motion = Vector2()
 
 var interactableObject = null
@@ -54,64 +56,67 @@ func _physics_process(delta):
 		#else:
 		#	motion.y = GRAVITY
 	
-	if right:
-		if isOnSlipperyFloor:
-			currentSpeed = speed
-		motion.x = 1
-		SPRITE.flip_h = false
-		isMoving = true
-	elif left:
-		if isOnSlipperyFloor:
-			currentSpeed = speed
-		motion.x = -1
-		SPRITE.flip_h = true
-		isMoving = true
-	elif isHasty:
-		isMoving = true
-		if motion.x < 0:
-			motion.x = -1
-		else:
+	if isAlive:
+	
+		if right:
+			if isOnSlipperyFloor:
+				currentSpeed = speed
 			motion.x = 1
-	else:
-		isMoving = false
-		if isOnSlipperyFloor:
-			if currentSpeed > 0 && motion.x != 0:
-				currentSpeed -= SLIPPERY_FACTOR
-				if motion.x >= 0:
-					motion.x = 1
+			SPRITE.flip_h = false
+			isMoving = true
+		elif left:
+			if isOnSlipperyFloor:
+				currentSpeed = speed
+			motion.x = -1
+			SPRITE.flip_h = true
+			isMoving = true
+		elif isHasty:
+			isMoving = true
+			if motion.x < 0:
+				motion.x = -1
+			else:
+				motion.x = 1
+		else:
+			isMoving = false
+			if isOnSlipperyFloor:
+				if currentSpeed > 0 && motion.x != 0:
+					currentSpeed -= SLIPPERY_FACTOR
+					if motion.x >= 0:
+						motion.x = 1
+					else:
+						motion.x = -1
 				else:
-					motion.x = -1
+					motion.x = 0
+					currentSpeed = speed;
 			else:
 				motion.x = 0
-				currentSpeed = speed;
+			
+		if jump && is_on_floor():
+			motion.y = -JUMP_FORCE
+			$JumpSound.play()
+		elif jump_released && motion.y < 0:
+			motion.y = 0
+			
+		if is_on_ceiling():
+			motion.y = 0
+			
+		if crouch:
+			crouch()
+		elif !check_ceiling_on_crouch():
+			stand()
+		
+		if isOnSlipperyFloor:
+			motion.x *= currentSpeed
 		else:
-			motion.x = 0
+			motion.x *= speed
 		
-	if jump && is_on_floor():
-		motion.y = -JUMP_FORCE
-		$JumpSound.play()
-	elif jump_released && motion.y < 0:
-		motion.y = 0
-		
-	if is_on_ceiling():
-		motion.y = 0
-		
-	if crouch:
-		crouch()
-	elif !check_ceiling_on_crouch():
-		stand()
-	
-	if isOnSlipperyFloor:
-		motion.x *= currentSpeed
-	else:
-		motion.x *= speed
+		if interact:
+			if interactableObject != null:
+				interactableObject.interact()
+				$InteractSound.play()
+				
 	animations()
 	move_and_slide(motion, UP)
-	
-	if interact:
-		if interactableObject != null:
-			interactableObject.interact()
-			$InteractSound.play()
 
 func crouch():
 	COLLISIONSHAPE.disabled = true
@@ -139,31 +144,30 @@ func toggle_animation(animation_name):
 		ANIM.play(animation_name)
 		
 func animations():
-	if is_on_floor():
-		if isCrouched:
-			if isMoving:
-				toggle_animation("CrouchWalk")
+	if isAlive:
+		if is_on_floor():
+			if isCrouched:
+				if isMoving:
+					toggle_animation("CrouchWalk")
+				else:
+					toggle_animation("CrouchIdle")
 			else:
-				toggle_animation("CrouchIdle")
-#			if motion.x >= 1:
-#				toggle_animation("CrouchWalk")
-#			elif motion.x <= -1:
-#				toggle_animation("CrouchWalk")
-#			else:
-#				toggle_animation("CrouchIdle")
+				if isMoving:
+					toggle_animation("Run")
+				else:
+					toggle_animation("Idle")
 		else:
-			if isMoving:
-				toggle_animation("Run")
-			else:
-				toggle_animation("Idle")
-#			if motion.x >= 1:d
-#				toggle_animation("Run")
-#			elif motion.x <= -1:
-#				toggle_animation("Run")
-#			else:
-#				toggle_animation("Idle")
+			if motion.y < 0:
+				toggle_animation("JumpUp")
+			if motion.y > 0:
+				toggle_animation("JumpDown")
 	else:
-		if motion.y < 0:
-			toggle_animation("JumpUp")
-		if motion.y > 0:
-			toggle_animation("JumpDown")
+		toggle_animation("Dead")
+		
+func die():
+	isAlive = false
+	motion.x = 0
+	RESPAWN_TIMER.start()
+
+func _on_RespawnTimer_timeout():
+	get_tree().change_scene(Global.LEVEL_1)
