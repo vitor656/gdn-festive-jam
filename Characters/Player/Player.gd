@@ -170,4 +170,6 @@ func die():
 	RESPAWN_TIMER.start()
 
 func _on_RespawnTimer_timeout():
-	get_tree().change_scene(Global.LEVEL_1)
+	#get_tree().change_scene(Global.LEVEL_1)
+	position = Global.lastCheckpoint
+	isAlive = true
